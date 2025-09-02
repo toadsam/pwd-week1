@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PWD Week 1 · 첫 웹사이트</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-gradients"></div>
+
+  <header class="header">
+    <nav class="nav container">
+      <div class="logo">PWD<span class="dot">•</span>WEEK1</div>
+      <button id="themeToggle" class="icon-btn" aria-label="테마 전환">🌙</button>
+    </nav>
+
+    <section class="hero container">
+      <h1>환영합니다! <span class="accent">첫 웹사이트</span></h1>
+      <p>HTML · CSS · JavaScript로 감각적인 인터랙션을 만들어 봅시다.</p>
+      <div class="hero-actions">
+        <a href="#about" class="btn btn-primary">시작하기</a>
+        <button class="btn btn-ghost" onclick="changeText()">한 줄 격려 받기</button>
+      </div>
+    </section>
+  </header>
+
+  <main class="container">
+    <section id="about" class="card reveal">
+      <h2>자기소개</h2>
+      <p id="intro">안녕하세요. 저는 웹 개발을 공부하고 있습니다.</p>
+      <div class="chip-row">
+        <span class="chip">#HTML</span>
+        <span class="chip">#CSS</span>
+        <span class="chip">#JavaScript</span>
+        <span class="chip">#GitHub Pages</span>
+      </div>
+    </section>
+
+    <section class="grid two reveal">
+      <article class="card">
+        <h3>무엇을 배웠나요?</h3>
+        <ul class="list">
+          <li>시맨틱 마크업과 반응형 레이아웃</li>
+          <li>컴포넌트 기반 스타일(카드/버튼/칩)</li>
+          <li>간단한 DOM 조작과 이벤트</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h3>다음 목표</h3>
+        <p>작은 상호작용을 더해 **사용자 경험**을 끌어올립니다.</p>
+        <button class="btn btn-primary w-full" onclick="toast('좋아요! 함께 해봐요 🚀')">목표 응원받기</button>
+      </article>
+    </section>
+
+    <section class="cta card reveal">
+      <h2>지금 바로 배포해 보기</h2>
+      <p>GitHub Pages에 올리면 친구들과 결과를 공유할 수 있어요.</p>
+      <a class="btn btn-ghost" href="https://pages.github.com/" target="_blank" rel="noreferrer">가이드 보기</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© 2025 PWD Week 1. 빌드: <span id="buildTime"></span></p>
+      <a class="small-link" href="#" onclick="scrollTo({top:0, behavior:'smooth'}); return false;">위로 ↑</a>
+    </div>
+  </footer>
+
+  <div id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
