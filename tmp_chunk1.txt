@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>득근득근 (DEUKGEUNDEUKGEUN) - PRD 원페이지</title>
+    <title>?�근?�근 (DEUKGEUNDEUKGEUN) - PRD ?�페?��?</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Noto Sans KR for readability, Bebas Neue for display -->
@@ -78,13 +78,15 @@
             margin-right: 8px;
         }
         .content-section {
-            cursor: default;
-            transition: background-color 0.3s ease-in-out;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
             border-radius: 12px;
             padding: 1px;
         }
         .content-section:hover {
             background-color: #1a1a1a;
+            transform: scale(1.01);
+            box-shadow: 0 0 18px rgba(197, 143, 255, 0.6);
         }
         .feature-item, .kpi-item {
             padding: 0.8rem; /* Reduced padding */
@@ -144,24 +146,6 @@
             overflow-y: auto;
             border: 2px solid #FF3C8A;
         }
-        #modal-body img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-        }
-        /* UX image preview */
-        .ux-img {
-            width: 100%;
-            max-height: 260px;
-            object-fit: cover;
-            border-radius: 12px;
-            border: 2px solid #333;
-            box-shadow: 0 0 12px rgba(197, 143, 255, 0.15);
-            cursor: zoom-in;
-            transition: transform 0.2s ease;
-        }
-        .ux-img:hover { transform: scale(1.01); }
         #modal-content .modal-section-header {
             font-size: 2rem;
             color: #FF3C8A; 
@@ -198,110 +182,111 @@
     <div class="one-pager-container" id="one-pager-container">
         <header class="text-center mb-4">
             <p class="text-lg text-accent-pink font-bold mb-1">PRODUCT REQUIREMENT DOCUMENT (PRD) v1.1</p>
-            <p class="text-xs text-text-muted mb-2">작성자: 정재훈 (202127177) | 아주대학교 디지털미디어학과 | 2025.11.08</p>
-            <h1 class="main-title">득근득근 (DEUKGEUNDEUKGEUN)</h1>
-            <p class="text-lg text-text-muted font-light">“운동 문화의 새로운 기준, 득근에서 함께 성장하세요”</p>
+            <p class="text-xs text-text-muted mb-2">?�성?? ?�재??(202127177) | ?�주?�?�교 ?��??��??�어?�과 | 2025.11.08</p>
+            <h1 class="main-title">?�근?�근 (DEUKGEUNDEUKGEUN)</h1>
+            <p class="text-lg text-text-muted font-light">?�운??문화???�로??기�?, ?�근?�서 ?�께 ?�장?�세?��?/p>
         </header>
 
         <main>
-            <!-- 1. 프로젝트 개요 --><section class="content-section p-2 mb-2" data-modal-title="① 프로젝트 개요 & 서비스 목표">
-                <h2 class="section-header"><span>①</span> 프로젝트 개요</h2>
+            <!-- 1. ?�로?�트 개요 --><section class="content-section p-2 mb-2" data-modal-title="???�로?�트 개요 & ?�비??목표">
+                <h2 class="section-header"><span>??/span> ?�로?�트 개요</h2>
                 <div class="modal-body-source">
                     <p class="text-sm leading-relaxed text-text-muted">
-                        ‘득근득근’은 운동인들이 **소통, 정보 교류, 제품 구매, AI 상담**을 받을 수 있는 통합 피트니스 커뮤니티 플랫폼입니다. 특히 대학생 및 일반 운동인들에게 **운동의 동기부여**를 제공하며, <span class="text-accent-pink font-bold">"운동 문화의 새로운 기준"</span>을 만드는 것을 목표로 합니다.
+                        ?�득근득근’�? ?�동?�들??**?�통, ?�보 교류, ?�품 구매, AI ?�담**??받을 ???�는 ?�합 ?�트?�스 커�??�티 ?�랫?�입?�다. ?�히 ?�?�생 �??�반 ?�동?�들?�게 **?�동???�기부??*�??�공?�며, <span class="text-accent-pink font-bold">"?�동 문화???�로??기�?"</span>??만드??것을 목표�??�니??
                     </p>
-                    <h3 class="font-bold text-accent-purple mt-3 mb-1">서비스 목표</h3>
+                    <h3 class="font-bold text-accent-purple mt-3 mb-1">?�비??목표</h3>
                     <ul class="list-disc list-inside text-sm leading-relaxed space-y-1 text-text-muted">
-                        <li>정보, 리뷰, 공구, 상담을 한곳에서 제공하는 **올인원 플랫폼** 구축.</li>
-                        <li>정보 교류, 제품 구매, AI 상담을 통한 **체계적인 운동 습관 관리** 지원.</li>
+                        <li>?�보, 리뷰, 공구, ?�담???�곳?�서 ?�공?�는 **?�인???�랫??* 구축.</li>
+                        <li>?�보 교류, ?�품 구매, AI ?�담???�한 **체계?�인 ?�동 ?��? 관�?* 지??</li>
                     </ul>
                 </div>
             </section>
 
-            <!-- 2. 문제 정의 (Problem) --><section class="content-section p-2 mb-2" data-modal-title="② 문제 정의 (Pain Point)">
-                <h2 class="section-header"><span>②</span> 문제 정의 (Pain Point)</h2>
+            <!-- 2. 문제 ?�의 (Problem) --><section class="content-section p-2 mb-2" data-modal-title="??문제 ?�의 (Pain Point)">
+                <h2 class="section-header"><span>??/span> 문제 ?�의 (Pain Point)</h2>
                 <div class="modal-body-source">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm leading-relaxed">
                         <div class="p-3 bg-card-dark rounded-lg border-l-3 border-accent-pink">
-                            <p class="font-bold text-accent-pink mb-1">정보 분산 문제</p>
-                            <p class="text-text-muted text-xs">운동 정보가 여러 채널에 흩어져 체계적 접근이 어렵습니다.</p>
+                            <p class="font-bold text-accent-pink mb-1">?�보 분산 문제</p>
+                            <p class="text-text-muted text-xs">?�동 ?�보가 ?�러 채널???�어??체계???�근???�렵?�니??</p>
                         </div>
                         <div class="p-3 bg-card-dark rounded-lg border-l-3 border-accent-purple">
-                            <p class="font-bold text-accent-purple mb-1">광고성 정보</p>
-                            <p class="text-text-muted text-xs">헬스장/보충제 정보가 광고에 치우쳐 신뢰성이 떨어집니다.</p>
+                            <p class="font-bold text-accent-purple mb-1">광고???�보</p>
+                            <p class="text-text-muted text-xs">?�스??보충???�보가 광고??치우�??�뢰?�이 ?�어집니??</p>
                          </div>
                          <div class="p-3 bg-card-dark rounded-lg border-l-3 border-accent-pink">
-                            <p class="font-bold text-accent-pink mb-1">지속성 부족</p>
-                            <p class="text-text-muted text-xs">파트너/커뮤니티 부재로 꾸준함 유지가 힘듭니다.</p>
+                            <p class="font-bold text-accent-pink mb-1">지?�성 부�?/p>
+                            <p class="text-text-muted text-xs">?�트??커�??�티 부?�로 꾸�????��?가 ?�듭?�다.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- 3. 주요 기능 (Key Features) --><section class="content-section p-2 mb-2" data-modal-title="③ 주요 기능 (Key Features)">
-                <h2 class="section-header"><span>③</span> 주요 기능 (Key Features)</h2>
+            <!-- 3. 주요 기능 (Key Features) --><section class="content-section p-2 mb-2" data-modal-title="??주요 기능 (Key Features)">
+                <h2 class="section-header"><span>??/span> 주요 기능 (Key Features)</h2>
                 <div class="modal-body-source">
                     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
                         <div class="feature-item flex-col items-center text-center">
                             <i class="fa-solid fa-comments text-accent-pink mb-1"></i>
-                            <p class="font-bold text-text-light text-sm">커뮤니티</p>
-                            <p class="text-xs text-text-muted">팁, 후기, 인증글 공유</p>
+                            <p class="font-bold text-text-light text-sm">커�??�티</p>
+                            <p class="text-xs text-text-muted">?? ?�기, ?�증글 공유</p>
                         </div>
                         <div class="feature-item flex-col items-center text-center">
                             <i class="fa-solid fa-users-line text-accent-purple mb-1"></i>
-                            <p class="font-bold text-text-light text-sm">프로틴 공구</p>
-                            <p class="text-xs text-text-muted">운동용품 공동구매</p>
+                            <p class="font-bold text-text-light text-sm">?�로??공구</p>
+                            <p class="text-xs text-text-muted">?�동?�품 공동구매</p>
                         </div>
                         <div class="feature-item flex-col items-center text-center">
                             <i class="fa-solid fa-person-running text-accent-pink mb-1"></i>
-                            <p class="font-bold text-text-light text-sm">원정 모집</p>
-                            <p class="text-xs text-text-muted">지역별 파트너 모집</p>
+                            <p class="font-bold text-text-light text-sm">?�정 모집</p>
+                            <p class="text-xs text-text-muted">지??�� ?�트??모집</p>
                         </div>
                         <div class="feature-item flex-col items-center text-center">
                             <i class="fa-solid fa-map-location-dot text-accent-purple mb-1"></i>
-                            <p class="font-bold text-text-light text-sm">헬스장 후기</p>
-                            <p class="text-xs text-text-muted">지도 연동 리뷰</p>
+                            <p class="font-bold text-text-light text-sm">?�스???�기</p>
+                            <p class="text-xs text-text-muted">지???�동 리뷰</p>
                         </div>
                         <div class="feature-item flex-col items-center text-center">
                             <i class="fa-solid fa-microchip text-accent-pink mb-1"></i>
-                            <p class="font-bold text-text-light text-sm">AI 상담</p>
-                            <p class="text-xs text-text-muted">루틴/식단 맞춤 추천</p>
+                            <p class="font-bold text-text-light text-sm">AI ?�담</p>
+                            <p class="text-xs text-text-muted">루틴/?�단 맞춤 추천</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- 4. 사용자 정의 (Target Users) & UX --><section class="content-section p-2 mb-2" data-modal-title="④ 타깃 사용자 & UX 컨셉">
-                <h2 class="section-header"><span>④</span> 타깃 & UX 컨셉</h2>
+            <!-- 4. ?�용???�의 (Target Users) & UX --><section class="content-section p-2 mb-2" data-modal-title="???��??�용??& UX 컨셉">
+                <h2 class="section-header"><span>??/span> ?��?& UX 컨셉</h2>
                 <div class="modal-body-source">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <p class="font-bold text-accent-pink mb-1">주요 타깃층</p>
+                            <p class="font-bold text-accent-pink mb-1">주요 ?�깃층</p>
                             <ul class="list-disc list-inside text-xs leading-relaxed space-y-1 text-text-muted">
-                                <li>꾸준함이 부족한 **대학생 및 직장인**.</li>
-                                <li>운동용품, 보충제, 헬스장 정보를 **신뢰성** 있게 얻고 싶은 사람.</li>
-                                <li>같은 관심사를 가진 운동인들과 **교류**하고 싶은 사용자.</li>
+                                <li>꾸�??�이 부족한 **?�?�생 �?직장??*.</li>
+                                <li>?�동?�품, 보충?? ?�스???�보�?**?�뢰??* ?�게 ?�고 ?��? ?�람.</li>
+                                <li>같�? 관?�사�?가�??�동?�들�?**교류**?�고 ?��? ?�용??</li>
                             </ul>
                         </div>
                         <div>
-                            <p class="font-bold text-accent-purple mb-1">UX 시각적 컨셉</p>
-                            <figure>
-                                <img id="ux-image" class="ux-img" src="득근.png" alt="UX 컨셉 미리보기 이미지" />
-                                <figcaption class="text-xs text-text-muted mt-2">이미지를 클릭하면 확대됩니다.</figcaption>
-                            </figure>
+                            <p class="font-bold text-accent-purple mb-1">UX ?�각??컨셉</p>
+                            <ul class="list-disc list-inside text-xs leading-relaxed space-y-1 text-text-muted">
+                                <li>**메인 컬러:** 블랙(#0C0C0C), ?�온 ?�크(#FF3C8A), ?�플(#C58FFF)</li>
+                                <li>**?�워??** ?�너지 / ?�장 / 커�??�티 / ?�뢰</li>
+                                <li>**구성:** 강렬??문구?� CTA 버튼 배치.</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </section>
             
-            <!-- 5. 기술 구조 설계 (Tech Architecture) --><section class="content-section p-2 mb-2" data-modal-title="⑤ 기술 구조 설계 (Tech Architecture)">
-                <h2 class="section-header"><span>⑤</span> 기술 구조 (Tech Architecture)</h2>
+            <!-- 5. 기술 구조 ?�계 (Tech Architecture) --><section class="content-section p-2 mb-2" data-modal-title="??기술 구조 ?�계 (Tech Architecture)">
+                <h2 class="section-header"><span>??/span> 기술 구조 (Tech Architecture)</h2>
                 <div class="modal-body-source">
                     <table class="text-xs">
                         <thead>
                             <tr>
                                 <th>구분</th>
-                                <th>기술 스택</th>
+                                <th>기술 ?�택</th>
                                 <th>배포/API</th>
                             </tr>
                         </thead>
@@ -325,80 +310,80 @@
                 </div>
             </section>
 
-            <!-- 6. 성공 지표 (Success Metrics) --><section class="content-section p-2 mb-2" data-modal-title="⑥ 성공 지표 (Success Metrics) & 타임라인">
-                <h2 class="section-header"><span>⑥</span> 성공 지표 & 타임라인</h2>
+            <!-- 6. ?�공 지??(Success Metrics) --><section class="content-section p-2 mb-2" data-modal-title="???�공 지??(Success Metrics) & ?�?�라??>
+                <h2 class="section-header"><span>??/span> ?�공 지??& ?�?�라??/h2>
                 <div class="modal-body-source">
-                    <p class="font-bold text-accent-pink mb-2">핵심 성공 지표 (KPI)</p>
+                    <p class="font-bold text-accent-pink mb-2">?�심 ?�공 지??(KPI)</p>
                     <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
                         <div class="kpi-item flex-col items-center border-2 border-accent-pink">
                             <i class="fa-solid fa-chart-line text-accent-pink mb-1"></i>
                             <p class="font-bold text-accent-pink leading-tight">100명↑</p>
-                            <p class="text-xs text-text-muted">월간 방문자</p>
+                            <p class="text-xs text-text-muted">?�간 방문??/p>
                         </div>
                         <div class="kpi-item flex-col items-center border-2 border-accent-purple">
                             <i class="fa-solid fa-list-check text-accent-purple mb-1"></i>
                             <p class="font-bold text-accent-purple leading-tight">100개↑</p>
-                            <p class="text-xs text-text-muted">월 게시글</p>
+                            <p class="text-xs text-text-muted">??게시글</p>
                         </div>
                         <div class="kpi-item flex-col items-center border-2 border-accent-pink">
                             <i class="fa-solid fa-truck-fast text-accent-pink mb-1"></i>
-                            <p class="font-bold text-accent-pink leading-tight">20%↑</p>
-                            <p class="text-xs text-text-muted">공구 참여율</p>
+                            <p class="font-bold text-accent-pink leading-tight">20%??/p>
+                            <p class="text-xs text-text-muted">공구 참여??/p>
                         </div>
                         <div class="kpi-item flex-col items-center border-2 border-accent-purple">
                             <i class="fa-solid fa-robot text-accent-purple mb-1"></i>
-                            <p class="font-bold text-accent-purple leading-tight">50%↑</p>
-                            <p class="text-xs text-text-muted">AI 상담 이용률</p>
+                            <p class="font-bold text-accent-purple leading-tight">50%??/p>
+                            <p class="text-xs text-text-muted">AI ?�담 ?�용�?/p>
                         </div>
                         <div class="kpi-item flex-col items-center border-2 border-accent-pink">
                             <i class="fa-solid fa-pen-to-square text-accent-pink mb-1"></i>
                             <p class="font-bold text-accent-pink leading-tight">50개↑</p>
-                            <p class="text-xs text-text-muted">월 후기 등록 수</p>
+                            <p class="text-xs text-text-muted">???�기 ?�록 ??/p>
                         </div>
                     </div>
                     
-                    <p class="font-bold text-accent-purple mt-4 mb-2">주요 개발 일정 (Timeline)</p>
+                    <p class="font-bold text-accent-purple mt-4 mb-2">주요 개발 ?�정 (Timeline)</p>
                     <ul class="list-disc list-inside text-xs leading-relaxed space-y-1 text-text-muted">
-                        <li>**기획:** 11/01 ~ 11/09 (PRD 및 와이어프레임)</li>
-                        <li>**디자인:** 11/10 ~ 11/15 (UI 시안 제작)</li>
-                        <li>**개발:** 11/16 ~ 12/10 (핵심 기능 구현)</li>
-                        <li>**테스트 & 배포:** 12/11 ~ 12/20 (MVP 런칭)</li>
+                        <li>**기획:** 11/01 ~ 11/09 (PRD �??�?�어?�레??</li>
+                        <li>**?�자??** 11/10 ~ 11/15 (UI ?�안 ?�작)</li>
+                        <li>**개발:** 11/16 ~ 12/10 (?�심 기능 구현)</li>
+                        <li>**?�스??& 배포:** 12/11 ~ 12/20 (MVP ?�칭)</li>
                     </ul>
                 </div>
             </section>
 
-            <!-- 7. UX 흐름 요약 (User Flow) --><section class="content-section p-2 mb-2" data-modal-title="⑦ UX 흐름 요약 (User Flow) & 확장 계획">
-                <h2 class="section-header"><span>⑦</span> UX 흐름 & 확장 계획</h2>
+            <!-- 7. UX ?�름 ?�약 (User Flow) --><section class="content-section p-2 mb-2" data-modal-title="??UX ?�름 ?�약 (User Flow) & ?�장 계획">
+                <h2 class="section-header"><span>??/span> UX ?�름 & ?�장 계획</h2>
                 <div class="modal-body-source">
-                    <p class="font-bold text-accent-pink mb-2">UX 흐름 (4단계)</p>
+                    <p class="font-bold text-accent-pink mb-2">UX ?�름 (4?�계)</p>
                     <div class="flex flex-wrap justify-center items-stretch text-sm space-x-1 sm:space-x-2">
                         <div class="flow-item border-2 border-accent-pink">
                             <i class="fa-solid fa-eye"></i>
-                            <p class="font-bold text-xs">인식</p>
+                            <p class="font-bold text-xs">?�식</p>
                         </div>
                         <i class="fa-solid fa-angle-right flow-arrow hidden sm:block"></i>
                         <div class="flow-item border-2 border-accent-purple">
                             <i class="fa-solid fa-message"></i>
-                            <p class="font-bold text-xs">탐색 & 교류</p>
+                            <p class="font-bold text-xs">?�색 & 교류</p>
                         </div>
                         <i class="fa-solid fa-angle-right flow-arrow hidden sm:block"></i>
                         <div class="flow-item border-2 border-accent-pink">
                             <i class="fa-solid fa-dumbbell"></i>
-                            <p class="font-bold text-xs">행동</p>
+                            <p class="font-bold text-xs">?�동</p>
                         </div>
                         <i class="fa-solid fa-angle-right flow-arrow hidden sm:block"></i>
                         <div class="flow-item border-2 border-accent-purple">
                             <i class="fa-solid fa-chart-simple"></i>
-                            <p class="font-bold text-xs">성장 & 습관</p>
+                            <p class="font-bold text-xs">?�장 & ?��?</p>
                         </div>
                     </div>
                     
-                    <p class="font-bold text-accent-purple mt-4 mb-2">향후 확장 계획</p>
+                    <p class="font-bold text-accent-purple mt-4 mb-2">?�후 ?�장 계획</p>
                     <ul class="list-disc list-inside text-xs leading-relaxed space-y-1 text-text-muted">
-                        <li>AI 상담 기능 고도화 (루틴 자동 저장 및 히스토리)</li>
-                        <li>브랜드 제휴 프로틴몰 운영</li>
-                        <li>헬스장 포인트 제도 및 회원 등급제 도입</li>
-                        <li>모바일 앱 버전 (React Native) 개발</li>
+                        <li>AI ?�담 기능 고도??(루틴 ?�동 ?�??�??�스?�리)</li>
+                        <li>브랜???�휴 ?�로?�몰 ?�영</li>
+                        <li>?�스???�인???�도 �??�원 ?�급???�입</li>
+                        <li>모바????버전 (React Native) 개발</li>
                     </ul>
                 </div>
             </section>
@@ -411,7 +396,7 @@
             <span id="modal-close-btn">&times;</span>
             <div id="modal-header-title" class="modal-section-header"></div>
             <div id="modal-body">
-                <img id="lightbox-image" src="" alt="확대 이미지" style="display:none;" />
+                <!-- Content will be injected here -->
             </div>
         </div>
     </div>
@@ -423,33 +408,39 @@
             const modalBody = document.getElementById('modal-body');
             const closeModalBtn = document.getElementById('modal-close-btn');
             const sections = document.querySelectorAll('.content-section');
-            const uxImage = document.getElementById('ux-image');
-            const lightboxImage = document.getElementById('lightbox-image');
 
-            // Lightbox: open with image only
-            const openLightbox = (imgSrc) => {
-                if (!lightboxImage) return;
-                lightboxImage.src = imgSrc;
-                lightboxImage.style.display = 'block';
-                modalTitle.textContent = '';
+            // Function to open the modal
+            const openModal = (title, contentHTML) => {
+                modalTitle.textContent = title;
+                // Safely inject content, removing any potential click listeners
+                let tempDiv = document.createElement('div');
+                tempDiv.innerHTML = contentHTML;
+                const innerSections = tempDiv.querySelectorAll('.content-section');
+                innerSections.forEach(s => s.classList.remove('content-section'));
+                
+                modalBody.innerHTML = tempDiv.innerHTML;
                 modalOverlay.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
             };
 
             // Function to close the modal
             const closeModal = () => {
                 modalOverlay.style.display = 'none';
                 document.body.style.overflow = 'auto'; // Restore background scrolling
-                if (lightboxImage) {
-                    lightboxImage.src = '';
-                    lightboxImage.style.display = 'none';
-                }
+                modalBody.innerHTML = '';
             };
 
-            // Remove section modal behavior; only UX image opens lightbox
-            if (uxImage) {
-                uxImage.addEventListener('click', () => openLightbox(uxImage.src));
-            }
+            // Attach click listeners to all content sections
+            sections.forEach(section => {
+                section.addEventListener('click', (event) => {
+                    const title = section.getAttribute('data-modal-title');
+                    const contentSource = section.querySelector('.modal-body-source');
+                    
+                    if (title && contentSource) {
+                        openModal(title, contentSource.innerHTML);
+                    }
+                });
+            });
 
             // Attach close handlers
             closeModalBtn.addEventListener('click', closeModal);
