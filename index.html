@@ -1,76 +1,463 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PWD Week 1 · 첫 웹사이트</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>득근득근 (DEUKGEUNDEUKGEUN) - PRD 원페이지</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Noto Sans KR for readability, Bebas Neue for display -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* New Color Scheme based on PRD: Black, Neon Pink, Purple */
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-dark': '#0C0C0C', /* Main Black */
+                        'card-dark': '#1a1a1a', /* Dark Card Background */
+                        'accent-pink': '#FF3C8A', /* Neon Pink (Primary Highlight) */
+                        'accent-purple': '#C58FFF', /* Purple (Secondary Highlight/Title) */
+                        'text-light': '#F3F4F6', /* Light Gray Text */
+                        'text-muted': '#9CA3AF', /* Gray Muted Text */
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans KR"', 'sans-serif'],
+                        display: ['"Bebas Neue"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+        /* ---- Dark Mode & Gym Style Overrides ---- */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #030303; /* Nearly black background for the canvas */
+            color: #f3f4f6; /* Light text default */
+            padding: 10px; /* Reduced padding */
+            overflow: hidden; /* Prevent body scrolling */
+            font-size: 14px; /* Slightly reduced base font size */
+        }
+        .one-pager-container {
+            width: 100%;
+            max-width: 1100px; /* Adjusted max width */
+            background-color: #0C0C0C; /* Main Dark Container */
+            border-radius: 16px;
+            box-shadow: 0 0 30px rgba(197, 143, 255, 0.1), 0 0 15px rgba(255, 60, 138, 0.1);
+            padding: 30px 40px; /* Reduced padding */
+            box-sizing: border-box;
+            border: 1px solid #1a1a1a;
+            max-height: 98vh; /* Confined to viewport height */
+            overflow-y: auto; /* Allow internal scrolling if content overflows */
+        }
+        h1.main-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3.5rem; /* Reduced size */
+            letter-spacing: 0.15em;
+            color: #C58FFF; 
+            text-shadow: 0 0 6px rgba(197, 143, 255, 0.6);
+            margin-bottom: 2px;
+        }
+        .section-header {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 1.5rem; /* Reduced size */
+            font-weight: 700;
+            color: #f3f4f6;
+            margin-top: 2rem; /* Reduced margin */
+            margin-bottom: 1rem; /* Reduced margin */
+            padding-bottom: 0.3rem;
+            border-bottom: 3px solid #FF3C8A; 
+            pointer-events: none;
+        }
+        .section-header span {
+            color: #C58FFF;
+            margin-right: 8px;
+        }
+        .content-section {
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            border-radius: 12px;
+            padding: 1px;
+        }
+        .content-section:hover {
+            background-color: #1a1a1a;
+            transform: scale(1.01);
+            box-shadow: 0 0 18px rgba(197, 143, 255, 0.6);
+        }
+        .feature-item, .kpi-item {
+            padding: 0.8rem; /* Reduced padding */
+            border-radius: 10px;
+            background-color: #1a1a1a; 
+            border: 1px solid #333333;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .feature-item i, .kpi-item i {
+            font-size: 1.5rem; /* Reduced size */
+            margin-right: 0.5rem;
+        }
+        .kpi-item .font-bold {
+            font-size: 1.8rem; /* Reduced size */
+        }
+        .flow-item {
+            padding: 0.8rem 0.5rem; /* Reduced padding */
+        }
+        .flow-item i {
+            font-size: 1.8rem; /* Reduced size */
+        }
+        .flow-arrow {
+            font-size: 1.5rem; /* Reduced size */
+            margin: 0 0.5rem;
+        }
+        table {
+            font-size: 0.8rem; /* Reduced table font size */
+        }
+        th, td {
+            padding: 0.7rem 0.9rem; /* Reduced padding */
+        }
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+        /* ---- Modal Styles (No Change Needed for Scale) ---- */
+        #modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+        #modal-content {
+            background-color: #0C0C0C;
+            width: 90%;
+            max-width: 800px;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(197, 143, 255, 0.5); 
+            position: relative;
+            animation: fadeIn 0.3s ease-out;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 2px solid #FF3C8A;
+        }
+        #modal-content .modal-section-header {
+            font-size: 2rem;
+            color: #FF3C8A; 
+            border-bottom: 3px solid #C58FFF;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        #modal-close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 1.8rem;
+            color: #C58FFF;
+            cursor: pointer;
+            transition: color 0.2s;
+            line-height: 1;
+        }
+        #modal-close-btn:hover {
+            color: #FF3C8A;
+        }
+        #modal-body p, #modal-body li, #modal-body table {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
 </head>
-<body>
-  <div class="bg-gradients"></div>
+<body class="font-sans text-text-light">
 
-  <header class="header">
-    <nav class="nav container">
-      <div class="logo">PWD<span class="dot">•</span>WEEK1</div>
-      <button id="themeToggle" class="icon-btn" aria-label="테마 전환">🌙</button>
-    </nav>
+    <div class="one-pager-container" id="one-pager-container">
+        <header class="text-center mb-4">
+            <p class="text-lg text-accent-pink font-bold mb-1">PRODUCT REQUIREMENT DOCUMENT (PRD) v1.1</p>
+            <p class="text-xs text-text-muted mb-2">작성자: 정재훈 (202127177) | 아주대학교 디지털미디어학과 | 2025.11.08</p>
+            <h1 class="main-title">득근득근 (DEUKGEUNDEUKGEUN)</h1>
+            <p class="text-lg text-text-muted font-light">“운동 문화의 새로운 기준, 득근에서 함께 성장하세요”</p>
+        </header>
 
-    <section class="hero container">
-      <h1>환영합니다! <span class="accent">첫 웹사이트</span></h1>
-      <p>HTML · CSS · JavaScript로 감각적인 인터랙션을 만들어 봅시다.</p>
-      <div class="hero-actions">
-        <a href="#about" class="btn btn-primary">시작하기</a>
-        <button class="btn btn-ghost" onclick="changeText()">한 줄 격려 받기</button>
-      </div>
-    </section>
-  </header>
+        <main>
+            <!-- 1. 프로젝트 개요 --><section class="content-section p-2 mb-2" data-modal-title="① 프로젝트 개요 & 서비스 목표">
+                <h2 class="section-header"><span>①</span> 프로젝트 개요</h2>
+                <div class="modal-body-source">
+                    <p class="text-sm leading-relaxed text-text-muted">
+                        ‘득근득근’은 운동인들이 **소통, 정보 교류, 제품 구매, AI 상담**을 받을 수 있는 통합 피트니스 커뮤니티 플랫폼입니다. 특히 대학생 및 일반 운동인들에게 **운동의 동기부여**를 제공하며, <span class="text-accent-pink font-bold">"운동 문화의 새로운 기준"</span>을 만드는 것을 목표로 합니다.
+                    </p>
+                    <h3 class="font-bold text-accent-purple mt-3 mb-1">서비스 목표</h3>
+                    <ul class="list-disc list-inside text-sm leading-relaxed space-y-1 text-text-muted">
+                        <li>정보, 리뷰, 공구, 상담을 한곳에서 제공하는 **올인원 플랫폼** 구축.</li>
+                        <li>정보 교류, 제품 구매, AI 상담을 통한 **체계적인 운동 습관 관리** 지원.</li>
+                    </ul>
+                </div>
+            </section>
 
-  <main class="container">
-    <section id="about" class="card reveal">
-      <h2>자기소개</h2>
-      <p id="intro">안녕하세요. 저는 웹 개발을 공부하고 있습니다.</p>
-      <div class="chip-row">
-        <span class="chip">#HTML</span>
-        <span class="chip">#CSS</span>
-        <span class="chip">#JavaScript</span>
-        <span class="chip">#GitHub Pages</span>
-      </div>
-    </section>
+            <!-- 2. 문제 정의 (Problem) --><section class="content-section p-2 mb-2" data-modal-title="② 문제 정의 (Pain Point)">
+                <h2 class="section-header"><span>②</span> 문제 정의 (Pain Point)</h2>
+                <div class="modal-body-source">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm leading-relaxed">
+                        <div class="p-3 bg-card-dark rounded-lg border-l-3 border-accent-pink">
+                            <p class="font-bold text-accent-pink mb-1">정보 분산 문제</p>
+                            <p class="text-text-muted text-xs">운동 정보가 여러 채널에 흩어져 체계적 접근이 어렵습니다.</p>
+                        </div>
+                        <div class="p-3 bg-card-dark rounded-lg border-l-3 border-accent-purple">
+                            <p class="font-bold text-accent-purple mb-1">광고성 정보</p>
+                            <p class="text-text-muted text-xs">헬스장/보충제 정보가 광고에 치우쳐 신뢰성이 떨어집니다.</p>
+                         </div>
+                         <div class="p-3 bg-card-dark rounded-lg border-l-3 border-accent-pink">
+                            <p class="font-bold text-accent-pink mb-1">지속성 부족</p>
+                            <p class="text-text-muted text-xs">파트너/커뮤니티 부재로 꾸준함 유지가 힘듭니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-    <section class="grid two reveal">
-      <article class="card">
-        <h3>무엇을 배웠나요?</h3>
-        <ul class="list">
-          <li>시맨틱 마크업과 반응형 레이아웃</li>
-          <li>컴포넌트 기반 스타일(카드/버튼/칩)</li>
-          <li>간단한 DOM 조작과 이벤트</li>
-        </ul>
-      </article>
-      <article class="card">
-        <h3>다음 목표</h3>
-        <p>작은 상호작용을 더해 **사용자 경험**을 끌어올립니다.</p>
-        <button class="btn btn-primary w-full" onclick="toast('좋아요! 함께 해봐요 🚀')">목표 응원받기</button>
-      </article>
-    </section>
+            <!-- 3. 주요 기능 (Key Features) --><section class="content-section p-2 mb-2" data-modal-title="③ 주요 기능 (Key Features)">
+                <h2 class="section-header"><span>③</span> 주요 기능 (Key Features)</h2>
+                <div class="modal-body-source">
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+                        <div class="feature-item flex-col items-center text-center">
+                            <i class="fa-solid fa-comments text-accent-pink mb-1"></i>
+                            <p class="font-bold text-text-light text-sm">커뮤니티</p>
+                            <p class="text-xs text-text-muted">팁, 후기, 인증글 공유</p>
+                        </div>
+                        <div class="feature-item flex-col items-center text-center">
+                            <i class="fa-solid fa-users-line text-accent-purple mb-1"></i>
+                            <p class="font-bold text-text-light text-sm">프로틴 공구</p>
+                            <p class="text-xs text-text-muted">운동용품 공동구매</p>
+                        </div>
+                        <div class="feature-item flex-col items-center text-center">
+                            <i class="fa-solid fa-person-running text-accent-pink mb-1"></i>
+                            <p class="font-bold text-text-light text-sm">원정 모집</p>
+                            <p class="text-xs text-text-muted">지역별 파트너 모집</p>
+                        </div>
+                        <div class="feature-item flex-col items-center text-center">
+                            <i class="fa-solid fa-map-location-dot text-accent-purple mb-1"></i>
+                            <p class="font-bold text-text-light text-sm">헬스장 후기</p>
+                            <p class="text-xs text-text-muted">지도 연동 리뷰</p>
+                        </div>
+                        <div class="feature-item flex-col items-center text-center">
+                            <i class="fa-solid fa-microchip text-accent-pink mb-1"></i>
+                            <p class="font-bold text-text-light text-sm">AI 상담</p>
+                            <p class="text-xs text-text-muted">루틴/식단 맞춤 추천</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-    <section class="cta card reveal">
-      <h2>지금 바로 배포해 보기</h2>
-      <p>GitHub Pages에 올리면 친구들과 결과를 공유할 수 있어요.</p>
-      <a class="btn btn-ghost" href="https://pages.github.com/" target="_blank" rel="noreferrer">가이드 보기</a>
-    </section>
-  </main>
+            <!-- 4. 사용자 정의 (Target Users) & UX --><section class="content-section p-2 mb-2" data-modal-title="④ 타깃 사용자 & UX 컨셉">
+                <h2 class="section-header"><span>④</span> 타깃 & UX 컨셉</h2>
+                <div class="modal-body-source">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <p class="font-bold text-accent-pink mb-1">주요 타깃층</p>
+                            <ul class="list-disc list-inside text-xs leading-relaxed space-y-1 text-text-muted">
+                                <li>꾸준함이 부족한 **대학생 및 직장인**.</li>
+                                <li>운동용품, 보충제, 헬스장 정보를 **신뢰성** 있게 얻고 싶은 사람.</li>
+                                <li>같은 관심사를 가진 운동인들과 **교류**하고 싶은 사용자.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p class="font-bold text-accent-purple mb-1">UX 시각적 컨셉</p>
+                            <ul class="list-disc list-inside text-xs leading-relaxed space-y-1 text-text-muted">
+                                <li>**메인 컬러:** 블랙(#0C0C0C), 네온 핑크(#FF3C8A), 퍼플(#C58FFF)</li>
+                                <li>**키워드:** 에너지 / 성장 / 커뮤니티 / 신뢰</li>
+                                <li>**구성:** 강렬한 문구와 CTA 버튼 배치.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 5. 기술 구조 설계 (Tech Architecture) --><section class="content-section p-2 mb-2" data-modal-title="⑤ 기술 구조 설계 (Tech Architecture)">
+                <h2 class="section-header"><span>⑤</span> 기술 구조 (Tech Architecture)</h2>
+                <div class="modal-body-source">
+                    <table class="text-xs">
+                        <thead>
+                            <tr>
+                                <th>구분</th>
+                                <th>기술 스택</th>
+                                <th>배포/API</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Frontend</td>
+                                <td>React (Vite) + TailwindCSS</td>
+                                <td>AWS S3/CloudFront</td>
+                            </tr>
+                            <tr>
+                                <td>Backend</td>
+                                <td>Spring Boot + JWT</td>
+                                <td>AWS EC2 + MySQL (RDS)</td>
+                            </tr>
+                            <tr>
+                                <td>External API</td>
+                                <td colspan="2">OpenAI GPT API, Kakao Maps API</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <p>© 2025 PWD Week 1. 빌드: <span id="buildTime"></span></p>
-      <a class="small-link" href="#" onclick="scrollTo({top:0, behavior:'smooth'}); return false;">위로 ↑</a>
+            <!-- 6. 성공 지표 (Success Metrics) --><section class="content-section p-2 mb-2" data-modal-title="⑥ 성공 지표 (Success Metrics) & 타임라인">
+                <h2 class="section-header"><span>⑥</span> 성공 지표 & 타임라인</h2>
+                <div class="modal-body-source">
+                    <p class="font-bold text-accent-pink mb-2">핵심 성공 지표 (KPI)</p>
+                    <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
+                        <div class="kpi-item flex-col items-center border-2 border-accent-pink">
+                            <i class="fa-solid fa-chart-line text-accent-pink mb-1"></i>
+                            <p class="font-bold text-accent-pink leading-tight">100명↑</p>
+                            <p class="text-xs text-text-muted">월간 방문자</p>
+                        </div>
+                        <div class="kpi-item flex-col items-center border-2 border-accent-purple">
+                            <i class="fa-solid fa-list-check text-accent-purple mb-1"></i>
+                            <p class="font-bold text-accent-purple leading-tight">100개↑</p>
+                            <p class="text-xs text-text-muted">월 게시글</p>
+                        </div>
+                        <div class="kpi-item flex-col items-center border-2 border-accent-pink">
+                            <i class="fa-solid fa-truck-fast text-accent-pink mb-1"></i>
+                            <p class="font-bold text-accent-pink leading-tight">20%↑</p>
+                            <p class="text-xs text-text-muted">공구 참여율</p>
+                        </div>
+                        <div class="kpi-item flex-col items-center border-2 border-accent-purple">
+                            <i class="fa-solid fa-robot text-accent-purple mb-1"></i>
+                            <p class="font-bold text-accent-purple leading-tight">50%↑</p>
+                            <p class="text-xs text-text-muted">AI 상담 이용률</p>
+                        </div>
+                        <div class="kpi-item flex-col items-center border-2 border-accent-pink">
+                            <i class="fa-solid fa-pen-to-square text-accent-pink mb-1"></i>
+                            <p class="font-bold text-accent-pink leading-tight">50개↑</p>
+                            <p class="text-xs text-text-muted">월 후기 등록 수</p>
+                        </div>
+                    </div>
+                    
+                    <p class="font-bold text-accent-purple mt-4 mb-2">주요 개발 일정 (Timeline)</p>
+                    <ul class="list-disc list-inside text-xs leading-relaxed space-y-1 text-text-muted">
+                        <li>**기획:** 11/01 ~ 11/09 (PRD 및 와이어프레임)</li>
+                        <li>**디자인:** 11/10 ~ 11/15 (UI 시안 제작)</li>
+                        <li>**개발:** 11/16 ~ 12/10 (핵심 기능 구현)</li>
+                        <li>**테스트 & 배포:** 12/11 ~ 12/20 (MVP 런칭)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 7. UX 흐름 요약 (User Flow) --><section class="content-section p-2 mb-2" data-modal-title="⑦ UX 흐름 요약 (User Flow) & 확장 계획">
+                <h2 class="section-header"><span>⑦</span> UX 흐름 & 확장 계획</h2>
+                <div class="modal-body-source">
+                    <p class="font-bold text-accent-pink mb-2">UX 흐름 (4단계)</p>
+                    <div class="flex flex-wrap justify-center items-stretch text-sm space-x-1 sm:space-x-2">
+                        <div class="flow-item border-2 border-accent-pink">
+                            <i class="fa-solid fa-eye"></i>
+                            <p class="font-bold text-xs">인식</p>
+                        </div>
+                        <i class="fa-solid fa-angle-right flow-arrow hidden sm:block"></i>
+                        <div class="flow-item border-2 border-accent-purple">
+                            <i class="fa-solid fa-message"></i>
+                            <p class="font-bold text-xs">탐색 & 교류</p>
+                        </div>
+                        <i class="fa-solid fa-angle-right flow-arrow hidden sm:block"></i>
+                        <div class="flow-item border-2 border-accent-pink">
+                            <i class="fa-solid fa-dumbbell"></i>
+                            <p class="font-bold text-xs">행동</p>
+                        </div>
+                        <i class="fa-solid fa-angle-right flow-arrow hidden sm:block"></i>
+                        <div class="flow-item border-2 border-accent-purple">
+                            <i class="fa-solid fa-chart-simple"></i>
+                            <p class="font-bold text-xs">성장 & 습관</p>
+                        </div>
+                    </div>
+                    
+                    <p class="font-bold text-accent-purple mt-4 mb-2">향후 확장 계획</p>
+                    <ul class="list-disc list-inside text-xs leading-relaxed space-y-1 text-text-muted">
+                        <li>AI 상담 기능 고도화 (루틴 자동 저장 및 히스토리)</li>
+                        <li>브랜드 제휴 프로틴몰 운영</li>
+                        <li>헬스장 포인트 제도 및 회원 등급제 도입</li>
+                        <li>모바일 앱 버전 (React Native) 개발</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
     </div>
-  </footer>
 
-  <div id="toast"></div>
-  <script src="script.js"></script>
+    <!-- Modal Structure (Hidden by default) -->
+    <div id="modal-overlay">
+        <div id="modal-content">
+            <span id="modal-close-btn">&times;</span>
+            <div id="modal-header-title" class="modal-section-header"></div>
+            <div id="modal-body">
+                <!-- Content will be injected here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const modalOverlay = document.getElementById('modal-overlay');
+            const modalTitle = document.getElementById('modal-header-title');
+            const modalBody = document.getElementById('modal-body');
+            const closeModalBtn = document.getElementById('modal-close-btn');
+            const sections = document.querySelectorAll('.content-section');
+
+            // Function to open the modal
+            const openModal = (title, contentHTML) => {
+                modalTitle.textContent = title;
+                // Safely inject content, removing any potential click listeners
+                let tempDiv = document.createElement('div');
+                tempDiv.innerHTML = contentHTML;
+                const innerSections = tempDiv.querySelectorAll('.content-section');
+                innerSections.forEach(s => s.classList.remove('content-section'));
+                
+                modalBody.innerHTML = tempDiv.innerHTML;
+                modalOverlay.style.display = 'flex';
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            };
+
+            // Function to close the modal
+            const closeModal = () => {
+                modalOverlay.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Restore background scrolling
+                modalBody.innerHTML = '';
+            };
+
+            // Attach click listeners to all content sections
+            sections.forEach(section => {
+                section.addEventListener('click', (event) => {
+                    const title = section.getAttribute('data-modal-title');
+                    const contentSource = section.querySelector('.modal-body-source');
+                    
+                    if (title && contentSource) {
+                        openModal(title, contentSource.innerHTML);
+                    }
+                });
+            });
+
+            // Attach close handlers
+            closeModalBtn.addEventListener('click', closeModal);
+            modalOverlay.addEventListener('click', (event) => {
+                // Close modal when clicking outside the content box
+                if (event.target === modalOverlay) {
+                    closeModal();
+                }
+            });
+
+            // Close modal with ESC key
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && modalOverlay.style.display === 'flex') {
+                    closeModal();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
