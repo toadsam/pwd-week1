@@ -162,6 +162,19 @@
             transition: transform 0.2s ease;
         }
         .ux-img:hover { transform: scale(1.01); }
+        /* Generic lightbox images + stack logos */
+        .lb-img {
+            width: 100%;
+            max-height: 260px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 2px solid #333;
+            box-shadow: 0 0 12px rgba(197, 143, 255, 0.15);
+            cursor: zoom-in;
+            transition: transform 0.2s ease;
+        }
+        .lb-img:hover { transform: scale(1.01); }
+        .logo-img { width: auto; height: 28px; max-height: 28px; border: none; box-shadow: none; }
         #modal-content .modal-section-header {
             font-size: 2rem;
             color: #FF3C8A; 
@@ -208,12 +221,12 @@
                 <h2 class="section-header"><span>①</span> 프로젝트 개요</h2>
                 <div class="modal-body-source">
                     <p class="text-sm leading-relaxed text-text-muted">
-                        ‘득근득근’은 운동인들이 **소통, 정보 교류, 제품 구매, AI 상담**을 받을 수 있는 통합 피트니스 커뮤니티 플랫폼입니다. 특히 대학생 및 일반 운동인들에게 **운동의 동기부여**를 제공하며, <span class="text-accent-pink font-bold">"운동 문화의 새로운 기준"</span>을 만드는 것을 목표로 합니다.
+                        ‘득근득근’은 운동인들이 소통, 정보 교류, 제품 구매, AI 상담을 받을 수 있는 통합 피트니스 커뮤니티 플랫폼입니다. 특히 대학생 및 일반 운동인들에게 **운동의 동기부여**를 제공하며, <span class="text-accent-pink font-bold">"운동 문화의 새로운 기준"</span>을 만드는 것을 목표로 합니다.
                     </p>
                     <h3 class="font-bold text-accent-purple mt-3 mb-1">서비스 목표</h3>
                     <ul class="list-disc list-inside text-sm leading-relaxed space-y-1 text-text-muted">
-                        <li>정보, 리뷰, 공구, 상담을 한곳에서 제공하는 **올인원 플랫폼** 구축.</li>
-                        <li>정보 교류, 제품 구매, AI 상담을 통한 **체계적인 운동 습관 관리** 지원.</li>
+                        <li>정보, 리뷰, 공구, 상담을 한곳에서 제공하는 올인원 플랫폼 구축.</li>
+                        <li>정보 교류, 제품 구매, AI 상담을 통한 체계적인 운동 습관 관리 지원.</li>
                     </ul>
                 </div>
             </section>
@@ -278,13 +291,18 @@
                         <div>
                             <p class="font-bold text-accent-pink mb-1">주요 타깃층</p>
                             <ul class="list-disc list-inside text-xs leading-relaxed space-y-1 text-text-muted">
-                                <li>꾸준함이 부족한 **대학생 및 직장인**.</li>
-                                <li>운동용품, 보충제, 헬스장 정보를 **신뢰성** 있게 얻고 싶은 사람.</li>
-                                <li>같은 관심사를 가진 운동인들과 **교류**하고 싶은 사용자.</li>
+                                <li>꾸준함이 부족한 대학생 및 직장인.</li>
+                                <li>운동용품, 보충제, 헬스장 정보를 신뢰성 있게 얻고 싶은 사람.</li>
+                                <li>같은 관심사를 가진 운동인들과 교류하고 싶은 사용자.</li>
                             </ul>
                         </div>
                         <div>
                             <p class="font-bold text-accent-purple mb-1">UX 시각적 컨셉</p>
+                            <ul class="list-disc list-inside text-xs leading-relaxed space-y-1 text-text-muted mb-3">
+                                <li><span class="text-text-light font-semibold">메인 컬러:</span> 블랙(#0C0C0C), 네온 핑크(#FF3C8A), 퍼플(#C58FFF)</li>
+                                <li><span class="text-text-light font-semibold">키워드:</span> 에너지 / 성장 / 커뮤니티 / 신뢰</li>
+                                <li><span class="text-text-light font-semibold">구성:</span> 강렬한 문구와 CTA 버튼 배치</li>
+                            </ul>
                             <figure>
                                 <img id="ux-image" class="ux-img" src="득근.png" alt="UX 컨셉 미리보기 이미지" />
                                 <figcaption class="text-xs text-text-muted mt-2">이미지를 클릭하면 확대됩니다.</figcaption>
@@ -297,6 +315,17 @@
             <!-- 5. 기술 구조 설계 (Tech Architecture) --><section class="content-section p-2 mb-2" data-modal-title="⑤ 기술 구조 설계 (Tech Architecture)">
                 <h2 class="section-header"><span>⑤</span> 기술 구조 (Tech Architecture)</h2>
                 <div class="modal-body-source">
+                    <div class="logo-strip flex flex-wrap items-center gap-3 mb-3">
+                        <img class="logo-img lb-img" src="https://cdn.simpleicons.org/react/61DAFB" alt="React logo" />
+                        <img class="logo-img lb-img" src="https://cdn.simpleicons.org/vite/646CFF" alt="Vite logo" />
+                        <img class="logo-img lb-img" src="https://cdn.simpleicons.org/tailwindcss/06B6D4" alt="Tailwind CSS logo" />
+                        <img class="logo-img lb-img" src="https://cdn.simpleicons.org/springboot/6DB33F" alt="Spring Boot logo" />
+                        <img class="logo-img lb-img" src="https://cdn.simpleicons.org/jsonwebtokens/000000" alt="JWT logo" />
+                        <img class="logo-img lb-img" src="https://cdn.simpleicons.org/amazonaws/FF9900" alt="AWS logo" />
+                        <img class="logo-img lb-img" src="https://cdn.simpleicons.org/mysql/4479A1" alt="MySQL logo" />
+                        <img class="logo-img lb-img" src="https://cdn.simpleicons.org/openai/412991" alt="OpenAI logo" />
+                        <img class="logo-img lb-img" src="https://cdn.simpleicons.org/kakaotalk/FFCD00" alt="KakaoTalk logo" />
+                    </div>
                     <table class="text-xs">
                         <thead>
                             <tr>
@@ -359,10 +388,10 @@
                     
                     <p class="font-bold text-accent-purple mt-4 mb-2">주요 개발 일정 (Timeline)</p>
                     <ul class="list-disc list-inside text-xs leading-relaxed space-y-1 text-text-muted">
-                        <li>**기획:** 11/01 ~ 11/09 (PRD 및 와이어프레임)</li>
-                        <li>**디자인:** 11/10 ~ 11/15 (UI 시안 제작)</li>
-                        <li>**개발:** 11/16 ~ 12/10 (핵심 기능 구현)</li>
-                        <li>**테스트 & 배포:** 12/11 ~ 12/20 (MVP 런칭)</li>
+                        <li>기획: 11/01 ~ 11/09 (PRD 및 와이어프레임)</li>
+                        <li>디자인: 11/10 ~ 11/15 (UI 시안 제작)</li>
+                        <li>개발: 11/16 ~ 12/10 (핵심 기능 구현)</li>
+                        <li>테스트 & 배포: 12/11 ~ 12/20 (MVP 런칭)</li>
                     </ul>
                 </div>
             </section>
@@ -425,6 +454,7 @@
             const sections = document.querySelectorAll('.content-section');
             const uxImage = document.getElementById('ux-image');
             const lightboxImage = document.getElementById('lightbox-image');
+            const lbImages = document.querySelectorAll('.lb-img');
 
             // Lightbox: open with image only
             const openLightbox = (imgSrc) => {
@@ -446,7 +476,12 @@
                 }
             };
 
-            // Remove section modal behavior; only UX image opens lightbox
+            // Remove section modal behavior; add lightbox to all marked images
+            if (lbImages && lbImages.length) {
+                lbImages.forEach(img => {
+                    img.addEventListener('click', () => openLightbox(img.src));
+                });
+            }
             if (uxImage) {
                 uxImage.addEventListener('click', () => openLightbox(uxImage.src));
             }
